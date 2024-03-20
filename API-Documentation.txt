@@ -1,0 +1,89 @@
+Hi Fellow Developer :) 
+this is a API Documentation
+
+api_key = "Your API KEY"
+
+** Authentication APIs **
+
+POST BaseURL/api/login
+
+    Requirements:
+        headers: {
+		Content-Type: 'application/x-www-form-urlencoded',
+		api_key: api_key,
+        }
+        body: {
+		email: (string) value,
+		password: (string) value,
+        }
+
+    Responses:
+        200 Code => json {code: 0} Logged In Successfully
+        404 Code => json {code: 1} Wrong Username or password
+        500 Code => json {code: -1} Internal Server Error
+
+----------------------------------------------------------------
+
+POST BaseURL/api/signup
+
+    Requirements:
+        headers: {
+		Content-Type: 'application/x-www-form-urlencoded',
+		api_key: api_key,
+        }
+        body: {
+		username: (string) value,
+		password: (string Min(8)) value,
+		email: (string) value,
+		phone: (string Characters(11) ) value,
+		DOB: (Date OBJ) value
+        }
+
+    Responses:
+        200 Code => json {code: 0} Success (User Signed Up)
+        500 Code => json {code: -1} Internal Server Error
+
+
+----------------------------------------------------------------
+
+POST BaseURL/api/user-validate
+
+    Requirements:
+        headers: {
+            Content-Type: 'application/x-www-form-urlencoded',
+            api_key: api_key,
+        },
+        body: {
+            email: User's Email
+        }
+
+
+    Responses:
+        200 Code => json {code: 0} Success (user isn't in our system and sent secret code to it's email)
+        409 Code => {
+            json {code: 1} Username Exists
+            json {code: 2} Email Exists
+            json {code: 3} Phone Exists
+        }
+
+
+----------------------------------------------------------------
+
+POST BaseURL/api/email/${user_email}
+
+    Requirements:
+        headers: {
+            Content-Type: 'application/x-www-form-urlencoded',
+            api_key: api_key,
+        },
+        body: {
+            secret: 'secret that sent to user'
+        }
+
+    Responses:
+        200 Code => {
+            json {code: 0} Success (secret code was valid)
+            json {code: -1} failure (secret code was not valid)
+        }
+
+Note: This api is valid for 6 minute after 'BaseURL/api/user-validate' was Successfull !!

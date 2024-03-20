@@ -26,18 +26,6 @@ function query(sql, params) {
     });
 }
 
-// Checking Existing User Info In DB
-function existsFailCodes(err) {
-    if (err.includes('user.username')) {
-        return (1);
-    } else if (err.includes('user.phone')) {
-        return (3);
-    } else if (err.includes('user.email')) {
-        return (2);
-    }
-}
-
-
 module.exports = {
     init, query, existsFailCodes
 }

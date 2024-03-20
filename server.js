@@ -95,7 +95,7 @@ myEmitter.on('Email Verification', (result, email) => {
 });
 
 // Check Unique Info
-app.post('/api/user_info_check', async (req, res) => {
+app.post('/api/user-validate', async (req, res) => {
     if (req.headers.api_key == api_key) {
         const user = new classes.User(req.body);
         const result = await user.info_check();

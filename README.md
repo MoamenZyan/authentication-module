@@ -1,9 +1,9 @@
 # Authentication Module
-This module is done using Nodejs with some other liberaries
 
-## Key Aspects of this module
-- Database Tables Creation and Initialization when running the server
-- Login - Signup System with Email Activision
-- Login Session and Cookie management
-- OOP in creating user class and it's methods
+## The authentication module is developed in Node.js along with additional libraries, encompassing several key components:
+
+- Setup and Initialization of Database Tables upon server launch.
+- Implementation of a Login-Signup System incorporating Email Activation.
+- Management of Login Sessions and Cookies.
+- Utilization of Object-Oriented Programming for creating a User class along with its associated methods.
 
